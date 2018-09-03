@@ -8,40 +8,24 @@ var inventory = [
 		id: 1,
 		name: "Cotton T-Shirt",
 		images: [tshirt_blue, tshirt_green, tshirt_red, tshirt_yellow],
-		style_num: "MS13KT1906",
+		styleNum: "MS13KT1906",
 		sizes: ["S", "M", "L", "XL", "XXL"],
 		colors: ["blue", "red", "yellow", "green"],
-		full_price: 11.00,
-		discount_reduction: 0,
+		fullPrice: 11.00,
+		discountReduction: 0,
+		numOfItemsSelected: 1
 	},
 	{
 		id: 2,
 		name: "Other Cotton T-Shirt",
-		images: [tshirt_blue, tshirt_green, tshirt_red, tshirt_yellow],
-		style_num: "MS13KT1906",
+		images: [tshirt_green, tshirt_blue, tshirt_red, tshirt_yellow],
+		styleNum: "MS13KT1906",
 		sizes: ["S", "M", "L", "XL", "XXL"],
 		colors: ["blue", "red", "yellow", "green"],
-		full_price: 17.00,
-		discount_reduction: 0,
-	},
-	// {
-	//	id: 3,
-	// 	name: "Cotton T-Shirt"
-	// 	images: "",
-	// 	sizes: ["S", "M", "L", "XL", "XXL"],
-	// 	colors: ["blue", "red", "yellow", "green"],
-	// 	full_price: 21.00,
-	// 	discount_price: 12.00,
-	// },
-	// {
-	//	id: 4,
-	// 	name: "Cotton T-Shirt"
-	// 	images: "",
-	// 	sizes: ["S", "M", "L", "XL", "XXL"],
-	// 	colors: ["blue", "red", "yellow", "green"],
-	// 	full_price: 22.00,
-	// 	discount_price: 0,
-	// }
+		fullPrice: 17.00,
+		discountReduction: 0,
+		numOfItemsSelected: 1
+	}
 ]
 
 export default inventory;
