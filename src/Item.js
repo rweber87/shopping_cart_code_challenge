@@ -14,12 +14,13 @@ class Item extends Component {
 			color: props.item.colors[0],
 			price: (props.item.fullPrice - props.item.discountReduction).toFixed(2),
 			sizeSelected: "S",
-			qtySelected: this.props.numOfItemsSelected,
+			discountReduction: props.item.discountReduction,
+			numOfItemsSelected: props.item.numOfItemsSelected
 		}
 	}
 
 	render () {
-		console.log("state in item.js",this.state)
+		console.log(this.state)
 		return(
 			<div className="item">
 				<div className="item-image">
@@ -33,13 +34,18 @@ class Item extends Component {
 						<div>Style #: {this.state.styleNum}</div>
 						<div>Color: {this.state.color}</div>
 					</div>
-					<div>
-						<div>{this.state.sizeSelected}</div>
-					</div>
-					<div>
-						<div>${(this.state.price)}</div>
-					</div>
-					<a onClick={() => this.props.onRemove(this.state)}>X Remove Item</a>
+					<a>Edit  |</a>
+					<a onClick={() => this.props.onRemove(this.state)}>  X Remove Item  |</a>
+					<a>  Save For Later</a>
+				</div>
+				<div>
+					<div className="item-size">{this.state.sizeSelected}</div>
+				</div>
+				<div>
+					<div className="item-selected">{this.state.numOfItemsSelected}</div>
+				</div>
+				<div>
+					<div className="item-price">${(this.state.price)}</div>
 				</div>
 			</div>
 

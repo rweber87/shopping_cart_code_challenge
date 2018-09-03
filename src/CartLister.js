@@ -25,19 +25,12 @@ class CartLister extends Component {
 	}
 
 	removeFromCart(itemToRemove) {
-		console.log("item to remove", itemToRemove)
 		this.setState(prevState => ({
 			itemsInCart: prevState.itemsInCart.filter(item => item.id !== itemToRemove.id)
 		}))
-
-		// this.setState({
-		// 	itemsInCart: this.state.itemsInCart.filter(item => item.id !== itemToRemove.id)
-		// })
-		//console.log("state after remove", this.state)
 	}
 
 	render() {
-		console.log("state in render", this.state.itemsInCart)
 		var cartList = this.state.itemsInCart.map( item =>  <Item key={item.id} item={item} onRemove={this.removeFromCart.bind(this)} /> )
 		return(
 			<div>
@@ -49,6 +42,7 @@ class CartLister extends Component {
 				</div>
 				<div className="item-lister-decorative-line"></div>
 				{cartList}
+				<div className="item-lister-decorative-line-bottom"></div>
 			</div>
 		)
 	}
