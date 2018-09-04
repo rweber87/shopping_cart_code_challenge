@@ -54,15 +54,110 @@ div.item {
 
 #size {
 	display: flex;
-	padding-left: 60%;
+	padding-left: 56%;
 	padding-right: 8%;
 }
 
 #qty {
 	display: flex;
-	padding-right: 11%;
+	padding-right: 14%;
 }
 
 .item {
 	display: flex;
+}
+
+.item-image {
+	padding-right: 1%;
+}
+
+div.item-size {
+	padding-left: 165px;
+	padding-right: 85px;
+	font-weight: bold;
+}
+
+div.item-qty {
+	padding-left: 5px;
+	padding-right: 5px;
+	border: solid 2px #D9D9D9;
+}
+
+div.item-price {
+	font-weight: bold;
+	font-size: 20px;
+	padding-left: 130px;	
+}
+
+div.item-name {
+	font-weight: bold;
+	color: #5B5B5B;
+	padding-bottom: 3%;
+}
+
+div.item-descriptors {
+	padding-bottom: 10%;
+}
+
+div.item-functionality {
+	font-size: 12px;
+}
+
+.item-modal-overlay {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(2,36,29,0.75);
+}
+
+.item-modal {
+	margin: 50px;
+	display: flex;
+	color: #5B5B5B;
+	background-color: white;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.item-description-modal {
+	margin: 20px;
+	margin-right: 30px;
+	text-align: center;
+}
+
+.item-image-modal  {
+	margin: 20px;
+	margin-left: 30px;
+}
+
+.item-name-modal {
+	font-weight: bold;
+	color: #5B5B5B;
+	padding-bottom: 10px;
+}
+
+.item-price-modal {
+	font-weight: bold;
+	font-size: 20px;
+	padding-bottom: 50px;
+}
+
+.edit-button-modal {
+	background-color: #1F5DB2;
+	font-size: 15px;
+	color: white;
+	height: 35px;
+    width: 130px;
+    outline: none;
+}
+
+.size-option, .qty-selector {
+	margin-left: 10px;
 }

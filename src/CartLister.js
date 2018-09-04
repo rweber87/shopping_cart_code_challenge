@@ -15,13 +15,33 @@ class CartLister extends Component {
 				let sum = 0 
 				sum += (item.numOfItemsSelected * (item.fullPrice - item.discountReduction))
 			}),
-			promoCodeBoolean: false,
+			numOfItemsSelected: 1,
+			sizeOptionSelected: "S"
 		}
 	}
 
-	
-	handleEditItem(item){
+	handleInput(e){
+    	let numOfItems = Number(e.target.value)
+    	this.setState({ numOfItemsSelected: numOfItems })
+  	}
 
+  	handleSizeUpdate(e){
+    	let sizeOptionSelected = e.target.value
+    	this.setState({ sizeOptionSelected: sizeOptionSelected })
+  	}
+	
+	handleEdit(item){
+		 this.setState( prevState => ({
+		 	itemsInCart: this.state.itemsInCart.map(i => { 
+			 	if( i.id === item.id ){
+			 		i.sizeSelected = this.state.sizeOptionSelected;
+			 		i.numOfItemsSelected = this.state.numOfItemsSelected
+			 	}
+			 	return i
+			 }),
+		 	numOfItemsSelected: 0,
+		 	sizeOptionSelected: ""
+		 }))
 	}
 
 	removeFromCart(itemToRemove) {
@@ -31,7 +51,7 @@ class CartLister extends Component {
 	}
 
 	render() {
-		var cartList = this.state.itemsInCart.map( item =>  <Item key={item.id} item={item} onRemove={this.removeFromCart.bind(this)} /> )
+		var cartList = this.state.itemsInCart.map( item =>  <Item key={item.id} item={item} onRemove={this.removeFromCart.bind(this)} handleInput={this.handleInput.bind(this)} handleSizeUpdate={this.handleSizeUpdate.bind(this)} handleEdit={this.handleEdit.bind(this)}/> )
 		return(
 			<div>
 				<div className="item-lister-header">
