@@ -3,18 +3,13 @@ import inventory from './inventory.js'
 import Item from './Item'
 
 class CartLister extends Component {
-
-	
 	constructor(props) {
 		super(props);
-
+		let cartSum = 0;
 		this.state = {
 			itemsInCart: inventory,
 			itemCount: inventory.length,
-			cartValueTotal: inventory.forEach(function(item){ 
-				let sum = 0 
-				sum += (item.numOfItemsSelected * (item.fullPrice - item.discountReduction))
-			}),
+			cartValueTotal: null,
 			numOfItemsSelected: 1,
 			sizeOptionSelected: "S"
 		}
@@ -63,6 +58,7 @@ class CartLister extends Component {
 				<div className="item-lister-decorative-line"></div>
 				{cartList}
 				<div className="item-lister-decorative-line-bottom"></div>
+				<div>{this.state.cartValueTotal}</div>
 			</div>
 		)
 	}

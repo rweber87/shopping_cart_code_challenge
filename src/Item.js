@@ -34,9 +34,7 @@ class Item extends Component {
 	createSelectItems() {
 	     let items = [];         
 	     for (let i = 0; i <= this.state.sizes; i++) {             
-	          items.push(<option key={i} value={this.state.sizes[i]}>{this.state.sizes[i]}</option>);   
-	          //here I will be creating my options dynamically based on
-	          //what props are currently passed to the parent component
+	          items.push(<option key={i} value={this.state.sizes[i]}>{this.state.sizes[i]}</option>);
 	     }
 	     return items;
 	 }
@@ -98,7 +96,7 @@ class Item extends Component {
 									<input className="qty-selector" type="number" min="1" max="100" placeholder="1" onChange={ e => this.props.handleInput(e)} />
 								</div>
 							</div>
-							<button className="edit-button-modal" onSubmit={this.handleClose} onClick={ e => this.props.handleEdit(this.state)}>EDIT</button>
+							<button className="edit-button-modal"  onClick={ e => this.props.handleEdit(this.state)}>EDIT</button>
 						</div>
 			        	<div className="item-image-modal">
 							<img src={this.state.img[0]} />
