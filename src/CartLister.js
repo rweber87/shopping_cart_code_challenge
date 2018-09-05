@@ -47,6 +47,9 @@ class CartLister extends Component {
 
 	render() {
 		var cartList = this.state.itemsInCart.map( item =>  <Item key={item.id} item={item} onRemove={this.removeFromCart.bind(this)} handleInput={this.handleInput.bind(this)} handleSizeUpdate={this.handleSizeUpdate.bind(this)} handleEdit={this.handleEdit.bind(this)}/> )
+		const prices = this.state.itemsInCart.map(item => (item.fullPrice - item.discountReduction) * item.numOfItemsSelected)
+		const cartValueTotal = prices.reduce((acc, cur) => acc + cur);
+		console.log(cartValueTotal)
 		return(
 			<div>
 				<div className="item-lister-header">
@@ -58,7 +61,45 @@ class CartLister extends Component {
 				<div className="item-lister-decorative-line"></div>
 				{cartList}
 				<div className="item-lister-decorative-line-bottom"></div>
-				<div>{this.state.cartValueTotal}</div>
+				<div className="cart-footer">
+					<div className="help-section">
+						<div className="help-sub-section">
+							Need help or have questions?
+						</div>
+						<div className="help-sub-section">
+							Call Customer Service At
+							<div>
+								1-800-555-5555
+							</div>	
+						</div>
+						<div className="help-sub-section">
+							Chat with one of our stylists
+						</div>
+						<div className="help-sub-section">
+							See return or exchange police
+						</div>
+					</div>
+					<div className="total-section">
+						<div className="sub-total">
+							<div className="sub-total-text">SUB TOTAL</div>
+							<div className="sub-total-value">${cartValueTotal.toFixed(2)}</div>
+						</div>
+						<div className="promo-code">
+							PROMOTION CODE
+							<div className="promo-total-value">${(0).toFixed(2)}</div>
+						</div>
+						<div className="shipping-info">
+							ESTIMATED SHIPPING
+							<div className="shipping-total-value">FREE</div>
+						</div>
+						<div className="item-lister-decorative-line"></div>
+						<div className="estimated-total">
+							ESTIMATED TOTAL
+							<div className="estimated-total-value">${(cartValueTotal - 0).toFixed(2)}</div>
+						</div>
+						<div className="item-lister-decorative-line-bottom"></div>
+					</div>
+				</div>
 			</div>
 		)
 	}
