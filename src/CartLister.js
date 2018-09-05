@@ -10,14 +10,30 @@ class CartLister extends Component {
 			itemsInCart: inventory,
 			itemCount: inventory.length,
 			cartValueTotal: null,
-			numOfItemsSelected: 1,
-			sizeOptionSelected: "S"
+			quantity: 1,
+			sizeOptionSelected: "S",
 		}
+	}
+
+	handleOpen = (item) => {
+		console.log("I'm being opened", item)
+	    this.setState( prevState => ({ itemsInCart: this.state.itemsInCart.map(i => { 
+			 	if( i.id === item.id ){
+			 		i.modalState = true;
+			 	}
+			 		return i
+				})
+	   			 
+		}));
+	}
+
+	handleClose = (itemId) => {
+	    this.setState({ modalState: false });
 	}
 
 	handleInput(e){
     	let numOfItems = Number(e.target.value)
-    	this.setState({ numOfItemsSelected: numOfItems })
+    	this.setState({ quantity: numOfItems })
   	}
 
   	handleSizeUpdate(e){
@@ -30,11 +46,12 @@ class CartLister extends Component {
 		 	itemsInCart: this.state.itemsInCart.map(i => { 
 			 	if( i.id === item.id ){
 			 		i.sizeSelected = this.state.sizeOptionSelected;
-			 		i.numOfItemsSelected = this.state.numOfItemsSelected
+			 		i.quantity = this.state.quantity;
+			 		i.modalState = false;
 			 	}
 			 	return i
 			 }),
-		 	numOfItemsSelected: 0,
+		 	quantity: 0,
 		 	sizeOptionSelected: ""
 		 }))
 	}
@@ -46,10 +63,9 @@ class CartLister extends Component {
 	}
 
 	render() {
-		var cartList = this.state.itemsInCart.map( item =>  <Item key={item.id} item={item} onRemove={this.removeFromCart.bind(this)} handleInput={this.handleInput.bind(this)} handleSizeUpdate={this.handleSizeUpdate.bind(this)} handleEdit={this.handleEdit.bind(this)}/> )
-		const prices = this.state.itemsInCart.map(item => (item.fullPrice - item.discountReduction) * item.numOfItemsSelected)
+		var cartList = this.state.itemsInCart.map( item =>  <Item key={item.id} item={item} onRemove={this.removeFromCart.bind(this)} handleInput={this.handleInput.bind(this)} handleSizeUpdate={this.handleSizeUpdate.bind(this)} handleEdit={this.handleEdit.bind(this)} openModal={this.handleOpen.bind(this)} /> )
+		const prices = this.state.itemsInCart.map(item => (item.fullPrice - item.discountReduction) * item.quantity)
 		const cartValueTotal = prices.reduce((acc, cur) => acc + cur);
-		console.log(cartValueTotal)
 		return(
 			<div>
 				<div className="item-lister-header">

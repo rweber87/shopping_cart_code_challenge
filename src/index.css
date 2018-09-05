@@ -181,6 +181,7 @@ div.item-functionality {
 
 .help-section {
 	flex: 2 0 0;
+	font-size: 12px;
 }
 
 .help-sub-section {

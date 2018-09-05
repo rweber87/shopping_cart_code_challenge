@@ -13,8 +13,9 @@ var inventory = [
 		colors: ["blue", "red", "yellow", "green"],
 		fullPrice: 11.00,
 		discountReduction: 0,
-		numOfItemsSelected: 1.00,
-		sizeSelected: "S"
+		quantity: 1.00,
+		sizeSelected: "S",
+		modalState: false
 	},
 	{
 		id: 2,
@@ -25,8 +26,9 @@ var inventory = [
 		colors: ["green", "blue", "red", "yellow" ],
 		fullPrice: 17.00,
 		discountReduction: 0,
-		numOfItemsSelected: 1.00,
-		sizeSelected: "S"
+		quantity: 1.00,
+		sizeSelected: "S",
+		modalState: false
 	}
 ]
 

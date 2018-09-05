@@ -7,7 +7,7 @@ class Item extends Component {
 		super(props)
 
 		this.state = {
-			showModal: false,
+			modalState: props.item.modalState,
 			id: props.item.id,
 			img: props.item.images,
 			name: props.item.name,
@@ -18,17 +18,9 @@ class Item extends Component {
 			price: (props.item.fullPrice - props.item.discountReduction).toFixed(2),
 			sizeSelected: props.item.sizeSelected,
 			discountReduction: props.item.discountReduction,
-			numOfItemsSelected: props.item.numOfItemsSelected,
+			quantity: props.item.quantity,
 			colorSelected: "blue"
 		}
-	}
-
-	handleOpen = () => {
-	    this.setState({ showModal: true });
-	}
-
-	handleClose = () => {
-	    this.setState({ showModal: false });
 	}
 
 	createSelectItems() {
@@ -40,6 +32,7 @@ class Item extends Component {
 	 }
 
 	render () {
+		console.log(this.state)
 		return(
 			<div className="item">
 				<div className="item-image">
@@ -54,7 +47,7 @@ class Item extends Component {
 						<div>Color: {this.state.color}</div>
 					</div>
 					<div className="item-functionality">
-						<a onClick={this.handleOpen}>EDIT |</a>
+						<a onClick={() => this.props.openModal(this.state)}>EDIT |</a>
 						<a onClick={() => this.props.onRemove(this.state)}> X REMOVE ITEM |</a>
 						<a>  SAVE FOR LATER</a>
 					</div>
@@ -63,7 +56,7 @@ class Item extends Component {
 					<div className="item-size">{this.props.item.sizeSelected}</div>
 				</div>
 				<div>
-					<div className="item-qty">{this.props.item.numOfItemsSelected}</div>
+					<div className="item-qty">{this.props.item.quantity}</div>
 				</div>
 				<div>
 					<div className="item-price">${(this.state.price)}</div>
@@ -71,7 +64,7 @@ class Item extends Component {
 				<ReactModal
 					  className={"item-modal"}
 					  overlayClassName={"item-modal-overlay"}
-			          isOpen={this.state.showModal}
+			          isOpen={this.props.item.modalState}
 			          shouldCloseOnEsc={true}
 			          onRequestClose={this.handleClose}
 			          shouldCloseOnOverlayClick={true}
