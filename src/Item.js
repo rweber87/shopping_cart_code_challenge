@@ -32,7 +32,6 @@ class Item extends Component {
 	 }
 
 	render () {
-		console.log(this.state)
 		return(
 			<div className="item">
 				<div className="item-image">

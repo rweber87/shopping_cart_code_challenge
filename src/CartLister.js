@@ -22,8 +22,7 @@ class CartLister extends Component {
 			 		i.modalState = true;
 			 	}
 			 		return i
-				})
-	   			 
+				})			 
 		}));
 	}
 
